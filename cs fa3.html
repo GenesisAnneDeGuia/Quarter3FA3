@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AA - Randomizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 50px;
+        }
+        #container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>AA - Randomizer</h1>
+        <button onclick="generateRandomValues()">Generate Random Story</button>
+        <p id="output"></p>
+    </div>
+    
+    <script>
+        function generateRandomValues() {
+            let num1 = Math.ceil(Math.random() * 20);
+            let num2 = Math.ceil(Math.random() * 20);
+            let num3 = Math.ceil(Math.random() * 20);
+            
+            let maxNum = Math.max(num1, num2, num3);
+            let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let nthLetter = num1 <= 26 ? alphabet[num1 - 1] : "Out of range";
+            let totalMinutes = num2 * num3;
+            let hours = Math.floor(totalMinutes / 60);
+            let minutes = totalMinutes % 60;
+            
+            let story = "<b>Random Numbers:</b> " + num1 + ", " + num2 + ", " + num3 + "<br>" +
+                        "<b>Largest Number:</b> " + maxNum + "<br>" +
+                        "<b>" + num1 + "th Letter of the Alphabet:</b> " + nthLetter + "<br>" +
+                        "<b>Total Time:</b> " + totalMinutes + " mins → " + hours + " hrs " + minutes + " mins<br>" +
+                        "<b>Story:</b> Deep in the archives of the ancient library, a scholar whose name started with the letter " + nthLetter + " uncovered a lost manuscript. " +
+                        "The text spoke of " + maxNum + " hidden relics scattered across the land. Determined to solve the mystery, he/she spent " +
+                        hours + " hours and " + minutes + " minutes deciphering the clues that would lead to their discovery.";
+            
+            document.getElementById("output").innerHTML = story;
+        }
+    </script>
+</body>
+</html>
